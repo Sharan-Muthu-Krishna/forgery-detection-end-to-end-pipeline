@@ -1,0 +1,9 @@
+tensorflow
+pillow
+numpy
+scikit-learn
+fastapi
+uvicorn
+streamlit
+mlflow
+zenml

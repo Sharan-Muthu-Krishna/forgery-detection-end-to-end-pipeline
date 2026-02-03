@@ -1,0 +1,8 @@
+# Use TensorFlow 2.18+ which includes Keras 3.x
+# Required because the model was saved with Keras 3.x format
+tensorflow-cpu==2.18.0
+fastapi
+uvicorn[standard]
+python-multipart
+pillow
+numpy<2

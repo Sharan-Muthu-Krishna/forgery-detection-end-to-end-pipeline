@@ -2,15 +2,6 @@
 
 An automated MLOps pipeline that detects forged/tampered images using **Error Level Analysis (ELA)** and **Deep Learning**. One command trains, evaluates, and deploys the model — fully automated from data to production.
 
-![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.18-orange?logo=tensorflow)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green?logo=fastapi)
-![ZenML](https://img.shields.io/badge/ZenML-MLOps-purple)
-![MLflow](https://img.shields.io/badge/MLflow-Tracking-blue)
-![Docker](https://img.shields.io/badge/Docker-Containerized-blue?logo=docker)
-
----
-
 ## 🎯 Overview
 
 When someone edits an image (copy-paste, splice, retouch), the tampered region has different compression artifacts compared to the rest of the image. This system:
@@ -52,48 +43,6 @@ When someone edits an image (copy-paste, splice, retouch), the tampered region h
 │   Streamlit UI      ──►  Local Web Interface                  │
 └──────────────────────────────────────────────────────────────┘
 ```
-
----
-
-## 📂 Project Structure
-
-```
-├── run_train_eval_deploy.py        # Entry point — run this to start the pipeline
-│
-├── pipelines/                      # ZenML pipeline definitions
-│   └── train_eval_deploy_pipeline.py
-│
-├── steps/                          # ZenML pipeline steps
-│   ├── train_step.py               # Model training with MLflow tracking
-│   ├── prepare_test_data.py        # Clean + ELA transform test data
-│   ├── evaluate_model_step.py      # Calculate accuracy & F1 score
-│   └── deploy_model_step.py        # Auto-deploy if model improves
-│
-├── src/                            # Core business logic
-│   ├── data_ingestion/
-│   │   └── data_ingestor.py        # Extract datasets (Factory Pattern)
-│   ├── preprocessing/
-│   │   ├── image_cleaner.py        # Validate & convert images to JPEG
-│   │   └── ela_processor.py        # Generate ELA images
-│   ├── training/
-│   │   └── model_trainer.py        # Fine-tune MobileNetV2
-│   ├── evaluation/
-│   │   └── evaluator.py            # Compute metrics (accuracy, F1)
-│   └── deployment/
-│       └── cloud_deployer.py       # Upload to Hugging Face Spaces
-│
-├── serving/                        # Model serving
-│   ├── hf_space/                   # Cloud deployment (FastAPI + Docker)
-│   │   ├── app.py
-│   │   ├── Dockerfile
-│   │   └── requirements.txt
-│   └── ui/                         # Local Streamlit web interface
-│       └── app.py
-│
-└── models/                         # Saved models (gitignored)
-```
-
----
 
 ## 🚀 Quick Start
 
@@ -151,7 +100,6 @@ The model is deployed on Hugging Face Spaces:
 | Link | Description |
 |------|-------------|
 | [API Endpoint](https://sharanmk-forgery-detection.hf.space) | Production REST API |
-| [Swagger Docs](https://sharanmk-forgery-detection.hf.space/docs) | Interactive API documentation |
 
 ### API Usage
 
@@ -182,8 +130,6 @@ Response:
 | **UI** | Streamlit | Web interface for image upload |
 | **Container** | Docker | Reproducible deployment environment |
 | **Cloud** | Hugging Face Spaces | Free model hosting & serving |
-| **Image Processing** | Pillow (PIL) | ELA generation & image manipulation |
-
 ---
 
 ## 🔬 How ELA Works
@@ -225,9 +171,3 @@ Untampered images show **uniform** error levels. Tampered regions show **signifi
 ## 📝 License
 
 This project is for educational and portfolio purposes.
-
----
-
-<p align="center">
-  Built with ❤️ by <a href="https://github.com/Sharan-Muthu-Krishna">Sharan Muthu Krishna</a>
-</p>

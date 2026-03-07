@@ -33,7 +33,8 @@ models/
 # ========================
 # Datasets
 # ========================
-data*/
+data2*/
+data/
 clean_data/
 ela_data*/
 test_clean/
